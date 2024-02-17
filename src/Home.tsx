@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import DropDown from "./components/DropDown";
 import citiesMap, { City } from "./CitiesMap";
-import Card from "./components/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
+import Carousel from "./components/Carousel";
 
 interface Results {
   properties: {
     forecast: string;
   };
 }
-interface Results2 {
+export interface Results2 {
   properties: {
     periods: [
       {
@@ -22,7 +22,7 @@ interface Results2 {
     ];
   };
 }
-export interface weather {
+export interface Weather {
   name: string;
   temperature: number;
   shortForecast: string;
@@ -61,16 +61,10 @@ const Home = () => {
       <h1 className="text-3xl font-bold">
         {city ? `Weather in ${city[0].city}` : "Weather in New York"}
       </h1>
-      <div className="flex w-screen">
-        <DropDown
-          onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
-        />
-        <div>
-          {weather?.properties.periods.map((p) => (
-            <Card weather={p} key={p.name}></Card>
-          ))}
-        </div>
-      </div>
+      <DropDown
+        onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
+      />
+      <Carousel weather={weather!} />
     </main>
   );
 };

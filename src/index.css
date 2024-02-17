@@ -5,3 +5,11 @@
 body {
     font-family: "Inter", sans-serif;
 }
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: black;
+}
+.swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets.swiper-pagination-horizontal {
+    z-index: -1;
+    transform: translateY(-0.8rem);
+}

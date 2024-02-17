@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import DropDown from "./components/DropDown";
 import citiesMap, { City } from "./CitiesMap";
+import Card from "./components/Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
 
 interface Results {
   properties: {
@@ -18,6 +21,12 @@ interface Results2 {
       }
     ];
   };
+}
+export interface weather {
+  name: string;
+  temperature: number;
+  shortForecast: string;
+  icon: string;
 }
 
 const Home = () => {
@@ -37,7 +46,6 @@ const Home = () => {
         const forecast = data.properties.forecast;
         const res2 = await fetch(forecast);
         const localWeather: Results2 = await res2.json();
-
         setWeather(localWeather);
       } catch (e) {
         setError("Something went wrong" + e);
@@ -48,19 +56,20 @@ const Home = () => {
 
   if (error) return <p>{error}</p>;
   return (
-    <main>
-      <h1>{city ? `Weather in ${city[0].city}` : "Weather in New York"}</h1>
-      <DropDown
-        onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
-      />
-      <div>
-        <ul>
+    <main className="m-10">
+      <FontAwesomeIcon icon={faUmbrella} />
+      <h1 className="text-3xl font-bold">
+        {city ? `Weather in ${city[0].city}` : "Weather in New York"}
+      </h1>
+      <div className="flex w-screen">
+        <DropDown
+          onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
+        />
+        <div>
           {weather?.properties.periods.map((p) => (
-            <li
-              key={p.name}
-            >{`${p.name} Temp: ${p.temperature} ${p.shortForecast} `}</li>
+            <Card weather={p} key={p.name}></Card>
           ))}
-        </ul>
+        </div>
       </div>
     </main>
   );

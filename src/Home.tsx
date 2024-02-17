@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import DropDown from "./components/DropDown";
 import citiesMap, { City } from "./CitiesMap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "./components/Carousel";
+import NavBar from "./components/NavBar";
 
 interface Results {
   properties: {
@@ -18,6 +17,7 @@ export interface Results2 {
         temperature: number;
         shortForecast: string;
         icon: string;
+        windSpeed: string;
       }
     ];
   };
@@ -27,6 +27,7 @@ export interface Weather {
   temperature: number;
   shortForecast: string;
   icon: string;
+  windSpeed: string;
 }
 
 const Home = () => {
@@ -56,16 +57,20 @@ const Home = () => {
 
   if (error) return <p>{error}</p>;
   return (
-    <main className="m-10">
-      <FontAwesomeIcon icon={faUmbrella} />
-      <h1 className="text-3xl font-bold">
-        {city ? `Weather in ${city[0].city}` : "Weather in New York"}
-      </h1>
-      <DropDown
-        onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
-      />
-      <Carousel weather={weather!} />
-    </main>
+    <>
+      <NavBar />
+      <main className="mx-10 my-6">
+        <h1 className="text-[2.5rem] font-bold m-0">
+          {city
+            ? `Weather Forecast ${city[0].city}`
+            : "Weather Forecast New York"}
+        </h1>
+        <DropDown
+          onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
+        />
+        <Carousel weather={weather!} />
+      </main>
+    </>
   );
 };
 

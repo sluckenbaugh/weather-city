@@ -1,7 +1,7 @@
 import Card from "./Card";
 import { Results2 } from "../Home";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import "../index.css";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -16,8 +16,10 @@ const Carousel = ({ weather }: Props) => {
   return (
     <div className="mt-10">
       <Swiper
+        modules={[FreeMode, Pagination, Navigation, Mousewheel]}
         spaceBetween={20}
-        modules={[FreeMode, Pagination]}
+        mousewheel={true}
+        navigation={true}
         freeMode={true}
         pagination={{ clickable: true }}
         slidesPerView={4}

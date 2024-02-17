@@ -7,9 +7,17 @@ body {
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: black;
+    background-color: rgb(51 65 85);
 }
 .swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets.swiper-pagination-horizontal {
     z-index: -1;
     transform: translateY(-0.8rem);
+}
+
+.swiper-slide:first-child > div {
+    background: rgb(241 245 249);
+    border: 1px solid rgb(120, 120, 120);
+}
+.swiper-slide:first-child .first {
+    background: white;
 }

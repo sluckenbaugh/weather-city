@@ -1,5 +1,6 @@
 import { Weather } from "../Home";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../index.css";
 import {
   faSun,
   faSnowflake,
@@ -28,8 +29,10 @@ const svgMap = {
 
 const Card = ({ weather }: Props) => {
   return (
-    <div className="grid shadow border-2 mb-7 py-5 px-8 rounded-md w-[17rem] h-[18rem]">
-      <h2 className="font-bold text-[2rem] text-left">{weather.name}</h2>
+    <div className="grid shadow-md border-[0.7px] mb-7 py-5 px-8 rounded-md w-[17rem] h-[18rem]">
+      <h2 className="font-bold text-[2rem] text-left border-bottom">
+        {weather.name}
+      </h2>
       <div className="flex">
         <p className="text-[2.3rem]">{`${weather.temperature}°`}</p>
         <div className="ml-5 text-[2.3rem]">
@@ -50,7 +53,9 @@ const Card = ({ weather }: Props) => {
             : null}
         </div>
       </div>
-      <p>{weather.shortForecast}</p>
+      <p className="first font-[200] bg-slate-200 flex text-center justify-center items-center py-1 px-3 rounded-md">
+        {weather.shortForecast}
+      </p>
     </div>
   );
 };

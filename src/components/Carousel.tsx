@@ -7,12 +7,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { SlideNext, SlidePrev } from "./SlideButton";
+import { City } from "../CitiesMap";
 
 interface Props {
   weather: Results2;
+  city: City[];
 }
 
-const Carousel = ({ weather }: Props) => {
+const Carousel = ({ weather, city }: Props) => {
   return (
     <div className="mt-10">
       <Swiper
@@ -24,9 +26,12 @@ const Carousel = ({ weather }: Props) => {
         pagination={{ clickable: true }}
         slidesPerView={4}
       >
-        {weather?.properties.periods.map((p) => (
+        {weather?.properties.periods.map((p, index) => (
           <SwiperSlide key={p.name}>
-            <Card weather={p} key={p.name}></Card>
+            <Card
+              weather={p}
+              key={city ? `${city[0].city} ${index}` : `New York ${index}`}
+            ></Card>
           </SwiperSlide>
         ))}
         <div className="flex justify-between">

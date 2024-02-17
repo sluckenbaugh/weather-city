@@ -11,6 +11,7 @@ interface Results {
 }
 export interface Results2 {
   properties: {
+    geometry: [[[number]]];
     periods: [
       {
         name: string;
@@ -18,6 +19,9 @@ export interface Results2 {
         shortForecast: string;
         icon: string;
         windSpeed: string;
+        windDirection: string;
+        relativeHumidity: { value: number };
+        probabilityOfPrecipitation: { value: number };
       }
     ];
   };
@@ -28,6 +32,9 @@ export interface Weather {
   shortForecast: string;
   icon: string;
   windSpeed: string;
+  windDirection: string;
+  relativeHumidity: { value: number };
+  probabilityOfPrecipitation: { value: number };
 }
 
 const Home = () => {
@@ -68,7 +75,7 @@ const Home = () => {
         <DropDown
           onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
         />
-        <Carousel weather={weather!} />
+        <Carousel city={city!} weather={weather!} />
       </main>
     </>
   );

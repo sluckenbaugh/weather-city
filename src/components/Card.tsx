@@ -41,18 +41,20 @@ const Card = ({ weather }: Props) => {
         onClick={() => {
           setClicked(!clicked);
         }}
-        className="grid overflow-scroll card shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[17rem] h-[18rem]"
+        className="grid card overflow-hidden mx-auto shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[13rem] h-[18rem] md:w-[13.5rem] lg:w-[14rem] xl:w-[15rem]"
       >
-        <div className="text-left grid gap-2 text-sm">
+        <div className="text-left leading-5 font-light grid gap-2 text-xs lg:text-[0.9rem]">
           <p className="font-bold text-lg mb-2">{weather.name}</p>
           <p className="bg-slate-200 p-1 rounded-md">{`Temperature: ${weather.temperature}°F`}</p>
           {weather.probabilityOfPrecipitation.value && (
             <p className="bg-slate-200 p-1 rounded-md">{`Chance of Percipitation: ${weather.probabilityOfPrecipitation.value}%`}</p>
           )}
+          {/* Wind */}
           <div className="bg-slate-200 p-1 rounded-md">
             <p>{`Wind Speed: ${weather.windSpeed}`}</p>
             <p>{`Wind Direction: ${weather.windDirection}`}</p>
           </div>
+          {/* humidity */}
           <div className="bg-slate-200 p-1 rounded-md">
             <p>{`Humidity: ${weather.relativeHumidity.value}%`}</p>
             <p>{`Dew Point: ${Math.floor(weather.dewpoint.value)}°C`}</p>
@@ -66,9 +68,11 @@ const Card = ({ weather }: Props) => {
       onClick={() => {
         setClicked(!clicked);
       }}
-      className="grid card shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[17rem] h-[18rem]"
+      className="grid card overflow-hidden mx-auto shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[13rem] h-[18rem] md:w-[13.5rem] lg:w-[14rem] xl:w-[15rem]"
     >
-      <h2 className="font-bold text-[2rem] text-left">{weather.name}</h2>
+      <h2 className="font-bold text-[1.4rem] text-left lg:text-[1.5rem] xl:text-[1.7rem]">
+        {weather.name}
+      </h2>
       <div className="flex">
         <p className="text-[2.3rem]">{`${weather.temperature}°`}</p>
         <div className="ml-5 text-[2.3rem]">

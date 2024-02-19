@@ -71,11 +71,14 @@ const Home = () => {
     <>
       <NavBar />
       <main className="mx-10 my-6">
-        <h1 className="text-[2.5rem] font-bold m-0">
-          {city
-            ? `Weather Forecast ${city[0].city}`
-            : "Weather Forecast New York"}
-        </h1>
+        <div className="sm:flex">
+          <h1 className="text-[1.6rem] sm:text-[2rem] mr-2 font-bold m-0 text-center sm:text-left">
+            Weather Forecast
+          </h1>
+          <p className="text-[1.6rem] sm:text-[2rem] font-bold m-0 text-center sm:text-left">
+            {city ? city[0].city : "New York"}
+          </p>
+        </div>
         <DropDown
           onSelect={(city) => setCity(citiesMap.filter((c) => c.city === city))}
         />

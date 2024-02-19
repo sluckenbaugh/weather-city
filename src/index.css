@@ -5,6 +5,12 @@
 body {
     font-family: "Inter", sans-serif;
 }
+/* .swiper-wrapper {
+    width: 70% !important;
+} */
+/* .swiper-slide {
+    width: fit-content !important;
+} */
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: rgb(51 65 85);
@@ -13,6 +19,20 @@ body {
     z-index: -1;
     transform: translateY(-0.8rem);
 }
+.swiper-pagination-bullets.swiper-pagination-bullets.swiper-pagination-horizontal span {
+    width: 5px;
+    height: 5px;
+    margin: 1.5px;
+}
+@media (min-width: 550px) {
+    .swiper-pagination-bullets.swiper-pagination-bullets.swiper-pagination-horizontal span {
+        width: 8px;
+        height: 8px;
+        margin: 4px;
+    }
+}
+
+
 
 .swiper-slide:first-child > button {
     background: rgb(241 245 249);
@@ -27,4 +47,9 @@ body {
 }
 .card:hover {
     transform: scale(1.03);
+}
+@media (min-width: 1200px) {
+    .card {
+        width: clamp(15rem, 15rem + 1vw, 18rem) !important;
+    }
 }

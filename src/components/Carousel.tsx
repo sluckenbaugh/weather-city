@@ -18,12 +18,32 @@ const Carousel = ({ weather, city }: Props) => {
   return (
     <div className="mt-10">
       <Swiper
+        breakpoints={{
+          300: {
+            slidesPerView: 1,
+          },
+          550: {
+            slidesPerView: 2,
+          },
+          750: {
+            slidesPerView: 3,
+          },
+          980: {
+            slidesPerView: 4,
+          },
+          1440: {
+            slidesPerView: 5,
+          },
+          1900: {
+            slidesPerView: 6,
+          },
+        }}
         modules={[FreeMode, Pagination, Navigation, Mousewheel]}
         spaceBetween={20}
         mousewheel={true}
         navigation={true}
         freeMode={true}
-        pagination={{ clickable: true }}
+        pagination={true}
         slidesPerView={4}
       >
         {weather?.properties.periods.map((p, index) => (

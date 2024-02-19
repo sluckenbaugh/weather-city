@@ -22,6 +22,8 @@ export interface Results2 {
         windDirection: string;
         relativeHumidity: { value: number };
         probabilityOfPrecipitation: { value: number };
+        dewpoint: { value: number };
+        detailedForecast: string;
       }
     ];
   };
@@ -35,6 +37,8 @@ export interface Weather {
   windDirection: string;
   relativeHumidity: { value: number };
   probabilityOfPrecipitation: { value: number };
+  dewpoint: { value: number };
+  detailedForecast: string;
 }
 
 const Home = () => {

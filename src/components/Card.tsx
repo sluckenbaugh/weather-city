@@ -10,6 +10,7 @@ import {
   faCloudMoon,
   faCloudSun,
   faBolt,
+  faSmog,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
@@ -22,12 +23,13 @@ const svgMap = {
   sunCloud: <FontAwesomeIcon className="text-yellow-400" icon={faCloudSun} />,
   snow: <FontAwesomeIcon className="text-blue-300" icon={faSnowflake} />,
   rain: (
-    <FontAwesomeIcon className="text-gray-700" icon={faCloudShowersHeavy} />
+    <FontAwesomeIcon className="text-gray-600" icon={faCloudShowersHeavy} />
   ),
-  cloud: <FontAwesomeIcon className="text-gray-700" icon={faCloud} />,
+  cloud: <FontAwesomeIcon className="text-gray-600" icon={faCloud} />,
   wind: <FontAwesomeIcon className="text-gray-700" icon={faWind} />,
   clear: <FontAwesomeIcon className="text-blue-900" icon={faCloudMoon} />,
   lightning: <FontAwesomeIcon className="text-yellow-400" icon={faBolt} />,
+  fog: <FontAwesomeIcon className="text-gray-400" icon={faSmog} />,
 };
 
 const Card = ({ weather }: Props) => {
@@ -39,14 +41,23 @@ const Card = ({ weather }: Props) => {
         onClick={() => {
           setClicked(!clicked);
         }}
-        className="grid card shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[17rem] h-[18rem]"
+        className="grid overflow-scroll card shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[17rem] h-[18rem]"
       >
-        <p>{`Wind: ${weather.windSpeed}`}</p>
-        <p>{`Wind Direction: ${weather.windDirection}`}</p>
-        <p>{`Humidity: ${weather.relativeHumidity.value}%`}</p>
-        {weather.probabilityOfPrecipitation.value && (
-          <p>{`Chance of Percipitation: ${weather.probabilityOfPrecipitation.value}%`}</p>
-        )}
+        <div className="text-left grid gap-2 text-sm">
+          <p className="font-bold text-lg mb-2">{weather.name}</p>
+          <p className="bg-slate-200 p-1 rounded-md">{`Temperature: ${weather.temperature}°F`}</p>
+          {weather.probabilityOfPrecipitation.value && (
+            <p className="bg-slate-200 p-1 rounded-md">{`Chance of Percipitation: ${weather.probabilityOfPrecipitation.value}%`}</p>
+          )}
+          <div className="bg-slate-200 p-1 rounded-md">
+            <p>{`Wind Speed: ${weather.windSpeed}`}</p>
+            <p>{`Wind Direction: ${weather.windDirection}`}</p>
+          </div>
+          <div className="bg-slate-200 p-1 rounded-md">
+            <p>{`Humidity: ${weather.relativeHumidity.value}%`}</p>
+            <p>{`Dew Point: ${Math.floor(weather.dewpoint.value)}°C`}</p>
+          </div>
+        </div>
       </button>
     );
   }
@@ -57,9 +68,7 @@ const Card = ({ weather }: Props) => {
       }}
       className="grid card shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[17rem] h-[18rem]"
     >
-      <h2 className="font-bold text-[2rem] text-left border-bottom">
-        {weather.name}
-      </h2>
+      <h2 className="font-bold text-[2rem] text-left">{weather.name}</h2>
       <div className="flex">
         <p className="text-[2.3rem]">{`${weather.temperature}°`}</p>
         <div className="ml-5 text-[2.3rem]">
@@ -82,6 +91,8 @@ const Card = ({ weather }: Props) => {
             ? svgMap.clear
             : weather.shortForecast.includes("Lightning")
             ? svgMap.lightning
+            : weather.shortForecast.includes("Fog")
+            ? svgMap.fog
             : null}
         </div>
       </div>

@@ -44,6 +44,7 @@ export interface Weather {
 
 const Home = () => {
   // Dark or light mode
+  if (!localStorage.getItem("theme")) localStorage.setItem("theme", "light");
   const userTheme = localStorage.getItem("theme");
 
   const [city, setCity] = useState<City[]>();

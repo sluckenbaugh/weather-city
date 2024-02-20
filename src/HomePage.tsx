@@ -3,6 +3,7 @@ import DropDown from "./components/DropDown";
 import citiesMap, { City } from "./CitiesMap";
 import Carousel from "./components/Carousel";
 import NavBar from "./components/NavBar";
+import { useNavigate } from "react-router-dom";
 
 interface Results {
   properties: {
@@ -42,33 +43,33 @@ export interface Weather {
 }
 
 const Home = () => {
+  // Dark or light mode
+  const userTheme = localStorage.getItem("theme");
+
   const [city, setCity] = useState<City[]>();
   const [weather, setWeather] = useState<Results2>();
-  const [error, setError] = useState<string>();
-  const [theme, setTheme] = useState("light");
+  const [error, setError] = useState(false);
+  const [theme, setTheme] = useState(userTheme);
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     if (theme === "light") {
-      setTheme("dark");
       document.documentElement.classList.add("dark");
-      document.body.classList.add("dark");
       localStorage.setItem("theme", "dark");
+      setTheme("dark");
     } else {
-      setTheme("light");
       document.documentElement.classList.remove("dark");
-      document.body.classList.remove("dark");
       localStorage.setItem("theme", "light");
+      setTheme("light");
     }
   };
-
-  const userTheme = localStorage.getItem("theme");
 
   // Get theme on page load
   useEffect(() => {
     if (userTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else document.documentElement.classList.remove("dark");
-  }, [userTheme]);
+  }, []);
 
   // Fetch Weather
   useEffect(() => {
@@ -85,17 +86,21 @@ const Home = () => {
         const localWeather: Results2 = await res2.json();
         setWeather(localWeather);
       } catch (e) {
-        setError("Something went wrong" + e);
+        setError(true);
       }
     };
     getWeather();
   }, [city]);
 
-  if (error) return <p>{error}</p>;
+  if (error) navigate("/error");
   return (
-    <div className={userTheme === "dark" ? "dark:bg-slate-900" : undefined}>
+    <div
+      className={
+        userTheme === "dark" ? "dark:bg-slate-900 h-screen" : "h-screen"
+      }
+    >
       <NavBar onChangeTheme={toggleTheme} userTheme={userTheme} />
-      <main className="mx-10 my-6 dark:bg-[oklch(0.746477 0.0216 264.436)]">
+      <main className="mx-10 my-6">
         <div className="sm:flex">
           <h1 className="text-[1.6rem] dark:text-white sm:text-[2rem] mr-2 font-bold m-0 text-center sm:text-left">
             Weather Forecast

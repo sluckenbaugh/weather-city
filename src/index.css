@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+h1,h2,p,div,button, select, body {
+    @apply transition-colors duration-300
+}
+
+select {
+    outline: none;
+}
+
 body {
     font-family: "Inter", sans-serif;
 }
-.dark {
+/* .dark {
     background: rgb(15 23 42);
-}
+} */
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: rgb(51 65 85);
@@ -21,6 +29,10 @@ body {
     height: 5px;
     margin: 1.5px;
 }
+.swiper.dark > .swiper-pagination-bullets.swiper-pagination-bullets.swiper-pagination-horizontal span {
+    background: white;
+}
+
 @media (min-width: 550px) {
     .swiper-pagination-bullets.swiper-pagination-bullets.swiper-pagination-horizontal span {
         width: 8px;

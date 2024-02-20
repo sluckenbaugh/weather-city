@@ -1,3 +1,5 @@
+import "../index.css";
+
 interface Props {
   onSelect: (city: string) => void;
 }

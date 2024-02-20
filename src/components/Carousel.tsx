@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { Results2 } from "../Home";
+import { Results2 } from "../HomePage";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { FreeMode, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import "../index.css";
@@ -19,6 +19,7 @@ const Carousel = ({ weather, city, userTheme }: Props) => {
   return (
     <div className="mt-10">
       <Swiper
+        className={userTheme === "dark" ? "dark" : undefined}
         breakpoints={{
           300: {
             slidesPerView: 1,

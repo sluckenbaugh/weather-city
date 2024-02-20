@@ -12,9 +12,12 @@ export const SlideNext = () => {
     <div className="p-2">
       <button
         onClick={() => swiper.slideNext()}
-        className="btn bg-white shadow w-[3rem] h-[3rem] rounded-[50%]"
+        className="btn bg-white dark:bg-slate-900 shadow w-[3rem] h-[3rem] rounded-[50%]"
       >
-        <FontAwesomeIcon className="text-[1.6rem]" icon={faChevronRight} />
+        <FontAwesomeIcon
+          className="text-[1.6rem] dark:text-white"
+          icon={faChevronRight}
+        />
       </button>
     </div>
   );
@@ -26,9 +29,12 @@ export const SlidePrev = () => {
     <div className="p-2">
       <button
         onClick={() => swiper.slidePrev()}
-        className="btn bg-white shadow w-[3rem] h-[3rem] rounded-[50%]"
+        className="btn bg-white dark:bg-slate-900 shadow w-[3rem] h-[3rem] rounded-[50%]"
       >
-        <FontAwesomeIcon className="text-[1.6rem]" icon={faChevronLeft} />
+        <FontAwesomeIcon
+          className="text-[1.6rem] dark:text-white"
+          icon={faChevronLeft}
+        />
       </button>
     </div>
   );

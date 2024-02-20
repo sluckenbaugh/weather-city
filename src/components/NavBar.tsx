@@ -9,7 +9,7 @@ interface Props {
 
 const NavBar = ({ onChangeTheme, userTheme }: Props) => {
   return (
-    <div className="flex justify-between p-[1rem] bg-slate-700 dark:bg-slate-900">
+    <div className="flex justify-between p-[1rem] bg-slate-900 dark:bg-slate-900">
       <div>
         <FontAwesomeIcon
           className="text-[1.3rem] text-white mr-2"
@@ -26,11 +26,11 @@ const NavBar = ({ onChangeTheme, userTheme }: Props) => {
         className="bg-none mr-3 text-white text-xl theme__btn"
       >
         {userTheme === "dark" ? (
-          <FontAwesomeIcon icon={faSun} />
+          <FontAwesomeIcon icon={faMoon} />
         ) : userTheme === "light" ? (
-          <FontAwesomeIcon icon={faMoon} />
+          <FontAwesomeIcon icon={faSun} />
         ) : (
-          <FontAwesomeIcon icon={faMoon} />
+          <FontAwesomeIcon icon={faSun} />
         )}
       </button>
     </div>

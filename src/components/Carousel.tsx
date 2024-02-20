@@ -12,9 +12,10 @@ import { City } from "../CitiesMap";
 interface Props {
   weather: Results2;
   city: City[];
+  userTheme: string | null;
 }
 
-const Carousel = ({ weather, city }: Props) => {
+const Carousel = ({ weather, city, userTheme }: Props) => {
   return (
     <div className="mt-10">
       <Swiper
@@ -47,7 +48,10 @@ const Carousel = ({ weather, city }: Props) => {
         slidesPerView={4}
       >
         {weather?.properties.periods.map((p, index) => (
-          <SwiperSlide key={p.name}>
+          <SwiperSlide
+            className={userTheme === "dark" ? "dark" : undefined}
+            key={p.name}
+          >
             <Card
               weather={p}
               key={city ? `${city[0].city} ${index}` : `New York ${index}`}

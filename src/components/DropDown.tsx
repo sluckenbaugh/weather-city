@@ -5,7 +5,10 @@ interface Props {
 const DropDown = ({ onSelect }: Props) => {
   return (
     <menu className="w-60 text-xl dropdown-bottom menu p-2 mt-4 shadow border-[1px] rounded h-fit mx-auto sm:mx-0">
-      <select onChange={(e) => onSelect(e.target.value)}>
+      <select
+        className="dark:bg-slate-900 dark:text-white"
+        onChange={(e) => onSelect(e.target.value)}
+      >
         <option value="New York">New York</option>
         <option value="Atlanta">Atlanta</option>
         <option value="Austin">Austin</option>

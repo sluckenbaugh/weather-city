@@ -1,9 +1,15 @@
-import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun, faUmbrella } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../index.css";
 
-const NavBar = () => {
+interface Props {
+  onChangeTheme: () => void;
+  userTheme: string | null;
+}
+
+const NavBar = ({ onChangeTheme, userTheme }: Props) => {
   return (
-    <div className="p-[1rem] bg-slate-700">
+    <div className="flex justify-between p-[1rem] bg-slate-700 dark:bg-slate-900">
       <div>
         <FontAwesomeIcon
           className="text-[1.3rem] text-white mr-2"
@@ -15,6 +21,18 @@ const NavBar = () => {
         <p className="inline font-bold text-[1.1rem] text-blue-500">.</p>
         <p className="inline font-bold text-[1.1rem] text-white">city</p>
       </div>
+      <button
+        onClick={() => onChangeTheme()}
+        className="bg-none mr-3 text-white text-xl theme__btn"
+      >
+        {userTheme === "dark" ? (
+          <FontAwesomeIcon icon={faSun} />
+        ) : userTheme === "light" ? (
+          <FontAwesomeIcon icon={faMoon} />
+        ) : (
+          <FontAwesomeIcon icon={faMoon} />
+        )}
+      </button>
     </div>
   );
 };

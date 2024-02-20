@@ -70,11 +70,11 @@ const Card = ({ weather }: Props) => {
       }}
       className="grid card overflow-hidden mx-auto shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[13rem] h-[18rem] md:w-[13.5rem] lg:w-[14rem] xl:w-[15rem]"
     >
-      <h2 className="font-bold text-[1.4rem] text-left lg:text-[1.5rem] xl:text-[1.7rem]">
+      <h2 className="dark:text-white font-bold text-[1.4rem] text-left lg:text-[1.5rem] xl:text-[1.7rem]">
         {weather.name}
       </h2>
       <div className="flex">
-        <p className="text-[2.3rem]">{`${weather.temperature}°`}</p>
+        <p className="dark:text-white text-[2.3rem]">{`${weather.temperature}°`}</p>
         <div className="ml-5 text-[2.3rem]">
           {weather.shortForecast.includes("Partly") &&
           weather.name.toLowerCase().includes("night")

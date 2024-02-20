@@ -5,12 +5,9 @@
 body {
     font-family: "Inter", sans-serif;
 }
-/* .swiper-wrapper {
-    width: 70% !important;
-} */
-/* .swiper-slide {
-    width: fit-content !important;
-} */
+.dark {
+    background: rgb(15 23 42);
+}
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: rgb(51 65 85);
@@ -32,14 +29,21 @@ body {
     }
 }
 
-
-
 .swiper-slide:first-child > button {
     background: rgb(241 245 249);
     border: 1px solid rgb(120, 120, 120);
 }
 .swiper-slide:first-child .first {
     background: white;
+}
+.swiper-slide.dark:first-child .card{
+    background-color: rgb(203 213 225);
+}
+.swiper-slide.dark:first-child .card h2 {
+    color: black;
+}
+.swiper-slide.dark:first-child .card div > p {
+    color: black;
 }
 
 .card {
@@ -52,4 +56,10 @@ body {
     .card {
         width: clamp(15rem, 15rem + 1vw, 18rem) !important;
     }
+}
+.theme__btn {
+    transition: all 300ms;
+}
+.theme__btn:active {
+    transform: scale(0.9);
 }

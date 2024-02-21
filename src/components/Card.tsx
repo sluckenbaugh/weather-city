@@ -44,9 +44,7 @@ const Card = ({ weather }: Props) => {
         className="grid card overflow-hidden mx-auto shadow-md border-[0.7px] mb-7 mt-5 mx-1 py-5 px-8 rounded-md w-[13rem] h-[18rem] md:w-[13.5rem] lg:w-[14rem] xl:w-[15rem]"
       >
         <div className="text-left leading-5 font-light grid gap-2 text-xs lg:text-[0.9rem]">
-          <p className="font-bold text-lg mb-2 dark:text-white">
-            {weather.name}
-          </p>
+          <p className="font-bold text-lg  dark:text-white">{weather.name}</p>
           <p className="bg-slate-200 p-1 rounded-md">{`Temperature: ${weather.temperature}°F`}</p>
           {weather.probabilityOfPrecipitation.value && (
             <p className="bg-slate-200 p-1 rounded-md">{`Chance of Percipitation: ${weather.probabilityOfPrecipitation.value}%`}</p>

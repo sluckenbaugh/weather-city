@@ -75,10 +75,10 @@ const Home = () => {
   // Fetch Weather
   useEffect(() => {
     const getWeather = async () => {
-      const url = city
-        ? `https://api.weather.gov/points/${city[0].point}`
-        : "https://api.weather.gov/points/40.730610,-73.935242";
       try {
+        const url = city
+          ? `https://api.weather.gov/points/${city[0].point}`
+          : "https://api.weather.gov/points/40.730610,-73.935242";
         const res = await fetch(url);
         const data: Results = await res.json();
 

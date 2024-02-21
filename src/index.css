@@ -13,6 +13,9 @@ select {
 body {
     font-family: "Inter", sans-serif;
 }
+#root {
+    height: 100vh;
+}
 /* .dark {
     background: rgb(15 23 42);
 } */

@@ -97,7 +97,9 @@ const Home = () => {
   return (
     <div
       className={
-        userTheme === "dark" ? "dark:bg-slate-900 h-screen" : "h-screen"
+        userTheme === "dark"
+          ? "dark:bg-slate-900 h-content sm:h-screen"
+          : "h-screen"
       }
     >
       <NavBar onChangeTheme={toggleTheme} userTheme={userTheme} />
